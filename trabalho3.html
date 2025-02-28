@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .task-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .task-container input[type="checkbox"] {
+            transform: scale(1.3);
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
+    <button onclick="addTask()">Adicionar</button>
+    <div id="taskList"></div>
+
+    <script>
+        let tarefas = [];
+
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const descricao = taskInput.value.trim();
+            if (descricao) {
+                tarefas.push({ descricao, status: false });
+                taskInput.value = '';
+                renderTasks();
+            }
+        }
+
+        function toggleTask(index) {
+            tarefas[index].status = !tarefas[index].status;
+            renderTasks();
+        }
+
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+            tarefas.forEach((tarefa, index) => {
+                const taskContainer = document.createElement('div');
+                taskContainer.classList.add('task-container');
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = tarefa.status;
+                checkbox.onclick = () => toggleTask(index);
+                
+                const taskText = document.createElement('span');
+                taskText.textContent = tarefa.descricao;
+                taskText.classList.toggle('completed', tarefa.status);
+                
+                taskContainer.appendChild(checkbox);
+                taskContainer.appendChild(taskText);
+                taskList.appendChild(taskContainer);
+            });
+        }
+    </script>
+</body>
+</html>
