@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckBoxes 2</title>
+
+    <style>
+        body {
+            background-color: rgb(136, 136, 136);
+        }
+
+        h1 {
+            font-size: 5rem;
+            color: aliceblue;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #addTarefa {
+            font-size: 3rem;
+        }
+
+        button {
+            font-size: 2rem
+        }
+
+        .box-tarefa span {
+            font-size: 2rem;
+        }
+
+        .box-tarefa input[type="checkbox"] {
+            transform: scale(1.3);
+        }
+
+        .completo {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas com localStorage</h1>
+
+    <input type="text" id="addTarefa" placeholder="Nova tarefa..">
+
+    <p><button id="botaoAdd"> Adicionar </button></p>
+    <p><button id="botaoRemove"> Remover todas tarefas </button></p>
+
+
+    <div id="listaTarefas">
+
+    </div>
+
+
+
+    <script src="trabalho5.js"></script>
+</body>
+</html>
